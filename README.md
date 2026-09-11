@@ -7,3 +7,4 @@ Repositorio creado para documentar mi preparación técnica antes y durante mis 
 - Creación del repositorio definitivo en GitHub.
 - Registro en la plataforma de estudio PortSwigger Web Security Academy.
 - Descarga de herramientas para el laboratorio en PC (VirtualBox y Kali Linux).
+-Laboratorio local completado: VirtualBox instalado y máquina Kali Linux operativa en el primer intento.
