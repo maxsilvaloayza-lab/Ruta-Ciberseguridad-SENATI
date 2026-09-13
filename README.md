@@ -19,4 +19,13 @@ Hoy inicié mi preparación desde cero con un enfoque híbrido (PC + Celular), l
   - `echo >` (Redirigir e inyectar texto para crear reportes en archivos .txt)
   - `cat` (Lectura y visualización rápida del contenido de archivos)
 - **Troubleshooting:** Aprendí a leer los errores de sintaxis del sistema (mayúsculas y comas erróneas) para corregir los comandos en caliente hasta lograr la ejecución exitosa.
- VirtualBox instalado y máquina Kali Linux operativa en el primer intento. 
+ VirtualBox instalado y máquina Kali Linux operativa en el primer intento.
+ 
+### [12/09/2026] - Día 3: Conquista Total de Linux Fundamentals
+Hoy cerré de golpe todo el bloque interactivo en la nube de Hack The Box Academy, completando las 30 secciones técnicas del examen y obteniendo mi primera insignia profesional.
+
+- **Secciones Dominadas:**
+  - Administración de archivos, directorios y descriptores de redirección.
+  - Búsqueda avanzada y filtrado de contenidos masivos (`grep`, comandos de flujo).
+  - Gestión de usuarios, políticas de bloqueo, control de servicios (`systemctl`) y manejo de particiones de disco.
+- **Hito Técnico:** Finalización 
