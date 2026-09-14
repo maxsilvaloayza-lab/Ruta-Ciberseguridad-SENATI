@@ -28,4 +28,18 @@ Hoy cerré de golpe todo el bloque interactivo en la nube de Hack The Box Academ
   - Administración de archivos, directorios y descriptores de redirección.
   - Búsqueda avanzada y filtrado de contenidos masivos (`grep`, comandos de flujo).
   - Gestión de usuarios, políticas de bloqueo, control de servicios (`systemctl`) y manejo de particiones de disco.
-- **Hito Técnico:** Finalización 
+- **Hito Técnico:** Finalización
+
+### [13/09/2026] - Día 3: Regularización de HTB y Auditoría Web Manual (PortSwigger)
+Hoy consolidé mi conocimiento de sistemas y di mis primeros pasos en el hackeo de aplicaciones web.
+- **Consolidación Técnica:** Repetí de forma manual los laboratorios de Hack The Box en mi consola local para asegurar el conocimiento real de comandos base.
+- **Laboratorio PortSwigger (SQL Injection):** Accedí a mi primer entorno controlado. Manipulé los parámetros de la URL de forma manual introduciendo caracteres especiales (`'`) para alterar la lógica de la base de datos del servidor y analizar fallas en la infraestructura web.
+
+### [14/09/2026] - Día 4: Clonación de Herramientas y Automatización CLI en Kali
+Hoy pasé a la acción real descargando y ejecutando scripts externos en mi laboratorio local de Kali Linux.
+- **Comandos Practicados:**
+  - `sudo apt update` (Actualización y sincronización de las listas de repositorios del sistema).
+  - `git clone [URL]` (Descarga directa de herramientas de hacking desde GitHub a la terminal).
+  - `python3 [archivo.py]` (Ejecución de programas automatizados en lenguaje Python).
+- **Logro Técnico:** Puse a punto mi sistema de ataque, cloné la herramienta 'Breacher' y automaticé mi primer escaneo de rutas ocultas (`/admin`, `/login`) sobre un entorno web de pruebas.
+ 
