@@ -40,6 +40,3 @@ Hoy pasé a la acción real descargando y ejecutando scripts externos en mi labo
 - **Comandos Practicados:**
   - `sudo apt update` (Actualización y sincronización de las listas de repositorios del sistema).
   - `git clone [URL]` (Descarga directa de herramientas de hacking desde GitHub a la terminal).
-  - `python3 [archivo.py]` (Ejecución de programas automatizados en lenguaje Python).
-- **Logro Técnico:** Puse a punto mi sistema de ataque, cloné la herramienta 'Breacher' y automaticé mi primer escaneo de rutas ocultas (`/admin`, `/login`) sobre un entorno web de pruebas.
- 
