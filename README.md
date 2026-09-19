@@ -40,3 +40,31 @@ Hoy pasé a la acción real descargando y ejecutando scripts externos en mi labo
 - **Comandos Practicados:**
   - `sudo apt update` (Actualización y sincronización de las listas de repositorios del sistema).
   - `git clone [URL]` (Descarga directa de herramientas de hacking desde GitHub a la terminal).
+ 
+  ## [15/09/2026] - Día 5: Reconocimiento de redes con Nmap
+
+Hoy comencé a practicar reconocimiento de redes utilizando Nmap sobre `scanme.nmap.org`, un objetivo destinado a prácticas.
+
+### 🧪 Práctica realizada
+
+- Ejecuté un escaneo básico con `nmap`.
+- Practiqué el ajuste de velocidad mediante `-T4`.
+- Utilicé `-sV` para identificar servicios y versiones.
+- Analicé puertos abiertos y comprendí su relación con los servicios.
+
+### 🔎 Conceptos aprendidos
+
+- Una **IP** identifica un equipo dentro de una red.
+- Un **puerto** es un punto de comunicación utilizado por los servicios.
+- `open` indica que Nmap detectó un servicio aceptando conexiones.
+- `closed` indica que el puerto es accesible, pero no hay un servicio escuchando.
+- `filtered` significa que un firewall o filtro impide determinar claramente el estado.
+- `-sV` permite intentar identificar el servicio y su versión.
+- `-T4` modifica la temporización para realizar el escaneo más rápidamente.
+
+### 💻 Comandos practicados
+
+```bash
+nmap -v scanme.nmap.org
+nmap -T4 scanme.nmap.org
+nmap -sV -T4 scanme.nmap.org
