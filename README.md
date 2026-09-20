@@ -69,9 +69,7 @@ Hoy comencé a practicar reconocimiento de redes utilizando Nmap sobre `scanme.n
 nmap -v scanme.nmap.org
 nmap -T4 scanme.nmap.org
 nmap -sV -T4 scanme.nmap.org
-
-
-
+ 
 ### [16/09/2026] - Día 6: Intercepción de Tráfico HTTP con Burp Suite
 Hoy integré el uso de proxies locales con los laboratorios avanzados de PortSwigger para manipular datos en tránsito.
 - **Herramientas Utilizadas:** Burp Suite (Proxy Interceptor) y PortSwigger Web Academy.
