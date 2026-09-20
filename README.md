@@ -70,9 +70,9 @@ nmap -v scanme.nmap.org
 nmap -T4 scanme.nmap.org
 nmap -sV -T4 scanme.nmap.org
  
+
 ### [16/09/2026] - Día 6: Intercepción de Tráfico HTTP con Burp Suite
 Hoy integré el uso de proxies locales con los laboratorios avanzados de PortSwigger para manipular datos en tránsito.
 - **Herramientas Utilizadas:** Burp Suite (Proxy Interceptor) y PortSwigger Web Academy.
 - **Práctica Real:** Desplegué un proxy HTTP local en modo intercepción para capturar, analizar y auditar cabeceras y peticiones en tiempo real (`GET` / `POST`) antes de su recepción en el servidor objetivo.
 - **Logro Técnico:** Realicé una manipulación de parámetros en caliente inyectando un carácter especial (`'`) en la carga útil (*payload*). Esto forzó una excepción en la lógica del backend, resultando en un Internal Server Error (500) debido a la falta de sanitización en la consulta SQL.
--
