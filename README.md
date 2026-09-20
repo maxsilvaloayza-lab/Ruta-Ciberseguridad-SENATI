@@ -63,13 +63,7 @@ Hoy comencé a practicar reconocimiento de redes utilizando Nmap sobre `scanme.n
 - `-sV` permite intentar identificar el servicio y su versión.
 - `-T4` modifica la temporización para realizar el escaneo más rápidamente.
 
-### 💻 Comandos practicados
 
-```bash
-nmap -v scanme.nmap.org
-nmap -T4 scanme.nmap.org
-nmap -sV -T4 scanme.nmap.org
- 
 
 ### [16/09/2026] - Día 6: Intercepción de Tráfico HTTP con Burp Suite
 Hoy integré el uso de proxies locales con los laboratorios avanzados de PortSwigger para manipular datos en tránsito.
