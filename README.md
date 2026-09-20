@@ -21,7 +21,8 @@ Hoy inicié mi preparación desde cero con un enfoque híbrido (PC + Celular), l
 - **Troubleshooting:** Aprendí a leer los errores de sintaxis del sistema (mayúsculas y comas erróneas) para corregir los comandos en caliente hasta lograr la ejecución exitosa.
  VirtualBox instalado y máquina Kali Linux operativa en el primer intento.
  
-### [12/09/2026] - Día 3: Conquista Total de Linux Fundamentals
+### [12/09/2026] - Día 2
+: Conquista Total de Linux Fundamentals
 Hoy cerré de golpe todo el bloque interactivo en la nube de Hack The Box Academy, completando las 30 secciones técnicas del examen y obteniendo mi primera insignia profesional.
 
 - **Secciones Dominadas:**
@@ -68,3 +69,11 @@ Hoy comencé a practicar reconocimiento de redes utilizando Nmap sobre `scanme.n
 nmap -v scanme.nmap.org
 nmap -T4 scanme.nmap.org
 nmap -sV -T4 scanme.nmap.org
+
+
+### [16/09/2026] - Día 6: Intercepción de Tráfico HTTP con Burp Suite
+Hoy integré el uso de proxies locales con los laboratorios avanzados de PortSwigger para manipular datos en tránsito.
+- **Herramientas Utilizadas:** Burp Suite (Proxy Interceptor) y PortSwigger Web Academy.
+- **Práctica Real:** Desplegué un proxy HTTP local en modo intercepción para capturar, analizar y auditar cabeceras y peticiones en tiempo real (`GET` / `POST`) antes de su recepción en el servidor objetivo.
+- **Logro Técnico:** Realicé una manipulación de parámetros en caliente inyectando un carácter especial (`'`) en la carga útil (*payload*). Esto forzó una excepción en la lógica del backend, resultando en un Internal Server Error (500) debido a la falta de sanitización en la consulta SQL.
+-
