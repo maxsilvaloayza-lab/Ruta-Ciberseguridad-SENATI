@@ -77,3 +77,9 @@ Hoy completé con éxito el laboratorio avanzado de enumeración y evasión de m
 - **Práctica Real:** Intercepté un flujo de login defectuoso y configuré vectores de ataque dirigidos (*Sniper mode*) cargando diccionarios dinámicos en los parámetros de autenticación.
 - **Logro Técnico:** Exploté la vulnerabilidad analizando las sutiles variaciones en las respuestas del servidor web (*Response Length* y redirecciones *302*), logrando extraer el usuario y la contraseña correctos para comprometer la cuenta objetivo. ¡Laboratorio marcado como SOLVED!
 -
+### [18/09/2026] - Día 8: Explotación de Vulnerabilidades de Lógica de Negocio con Burp Repeater
+Hoy audité flujos transaccionales web para identificar fallas en la validación de parámetros críticos del lado del servidor.
+- **Herramientas Utilizadas:** Burp Suite (Repeater Module) y PortSwigger Web Academy.
+- **Práctica Real:** Intercepté solicitudes de canje de productos (`POST /cart`) y las trasladé al módulo Repeater para realizar pruebas de manipulación de datos repetitivas sin alterar la sesión del navegador.
+- **Logro Técnico:** Identifiqué una vulnerabilidad de confianza excesiva en controles del lado del cliente (*Excessive trust in client-side controls*). Al modificar el parámetro de precio en tránsito antes de su procesamiento en el backend, demostré la falta de validación de integridad en el servidor, adquiriendo un artículo de alto valor por una fracción de su costo original y marcando el laboratorio como SOLVED.
+-
