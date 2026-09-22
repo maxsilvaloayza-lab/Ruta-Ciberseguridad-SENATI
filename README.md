@@ -70,4 +70,10 @@ Hoy integré el uso de proxies locales con los laboratorios avanzados de PortSwi
 - **Herramientas Utilizadas:** Burp Suite (Proxy Interceptor) y PortSwigger Web Academy.
 - **Práctica Real:** Desplegué un proxy HTTP local en modo intercepción para capturar, analizar y auditar cabeceras y peticiones en tiempo real (`GET` / `POST`) antes de su recepción en el servidor objetivo.
 - **Logro Técnico:** Realicé una manipulación de parámetros en caliente inyectando un carácter especial (`'`) en la carga útil (*payload*). Esto forzó una excepción en la lógica del backend, resultando en un Internal Server Error (500) debido a la falta de sanitización en la consulta SQL.
+
+### [17/09/2026] - Día 7: Automatización de Ataques de Fuerza Bruta con Burp Intruder
+Hoy completé con éxito el laboratorio avanzado de enumeración y evasión de mecanismos de autenticación.
+- **Herramientas Utilizadas:** Burp Suite (Intruder Module) y PortSwigger Web Academy.
+- **Práctica Real:** Intercepté un flujo de login defectuoso y configuré vectores de ataque dirigidos (*Sniper mode*) cargando diccionarios dinámicos en los parámetros de autenticación.
+- **Logro Técnico:** Exploté la vulnerabilidad analizando las sutiles variaciones en las respuestas del servidor web (*Response Length* y redirecciones *302*), logrando extraer el usuario y la contraseña correctos para comprometer la cuenta objetivo. ¡Laboratorio marcado como SOLVED!
 -
