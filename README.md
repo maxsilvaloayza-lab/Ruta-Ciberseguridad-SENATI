@@ -82,4 +82,27 @@ Hoy audité flujos transaccionales web para identificar fallas en la validación
 - **Herramientas Utilizadas:** Burp Suite (Repeater Module) y PortSwigger Web Academy.
 - **Práctica Real:** Intercepté solicitudes de canje de productos (`POST /cart`) y las trasladé al módulo Repeater para realizar pruebas de manipulación de datos repetitivas sin alterar la sesión del navegador.
 - **Logro Técnico:** Identifiqué una vulnerabilidad de confianza excesiva en controles del lado del cliente (*Excessive trust in client-side controls*). Al modificar el parámetro de precio en tránsito antes de su procesamiento en el backend, demostré la falta de validación de integridad en el servidor, adquiriendo un artículo de alto valor por una fracción de su costo original y marcando el laboratorio como SOLVED.
--
+
+### [18/09/2026] - Día 9: Rompiendo Contraseñas de Red mediante Fuerza Bruta Local con Hydra
+Hoy ejecuté pruebas de robustez de autenticación sobre servicios de administración remota directamente en un entorno local seguro.
+- **Herramientas Utilizadas:** Hydra (Network Logon Cracker) y Kali Linux CLI.
+- **Práctica Real:** Configuré un vector de ataque por diccionario dirigido contra el servicio SSH de la máquina virtual para evaluar la resistencia del sistema ante ataques de diccionario masivos.
+- **Logro Técnico:** Desplegué un análisis de fuerza bruta automatizado utilizando diccionarios criptográficos, identificando con éxito las credenciales válidas del usuario local en pocos segundos y consolidando el conocimiento práctico sobre la velocidad de procesamiento de Hydra.
+
+#### 🛠️ Comandos y Payloads Utilizados:
+- `sudo systemctl start ssh`
+  - **¿Para qué servía?** Abre el puerto de administración remota (SSH) en tu propia computadora Linux para simular que eres un servidor web real en producción listo para recibir conexiones o auditorías.
+- `sudo gunzip /usr/share/wordlists/rockyou.txt.gz`
+  - **¿Para qué servía?** Descomprime el famoso diccionario `rockyou.txt` que viene archivado de fábrica en Kali Linux. Este archivo contiene millones de contraseñas reales filtradas en internet y se necesita tener suelto para que las herramientas de hacking puedan leerlo.
+- `hydra -l kali -P /usr/share/wordlists/rockyou.txt -t 1 -w 3 ssh://127.0.0.1`
+  - **¿Para qué servía?** Activa a la herramienta Hydra (el robot abrepuertas automático). El parámetro `-l` define el usuario objetivo (`kali`), `-P` carga el diccionario de claves descompreso, `-t 1` le dice que intente una sola contraseña a la vez y `-w 3` mete una pausa de 3 segundos entre intentos para engañar los sistemas de seguridad locales, atacando a la dirección IP universal de pruebas `127.0.0.1`.
+
+ ### [19/09/2026] - Día 10: Inyección de Código del Lado del Cliente mediante Reflected XSS
+Hoy ejecuté auditorías de seguridad web enfocadas en la sanitización y validación de entradas de usuario para mitigar fallas de Cross-Site Scripting.
+- **Herramientas Utilizadas:** Burp Suite (Navegador Integrado) y PortSwigger Web Academy.
+- **Práctica Real:** Analicé el comportamiento de los parámetros de búsqueda en el backend (`GET /?search=`) para evaluar si los datos de entrada se reflejaban de manera directa en el código fuente HTML sin pasar por filtros de codificación.
+- **Logro Técnico:** Exploté con éxito una vulnerabilidad de XSS Reflejado en contexto HTML, forzando al navegador web a interpretar código arbitrario en el contexto de la sesión y marcando el laboratorio como SOLVED.
+
+#### 🛠️ Comandos y Payloads Utilizados:
+- `<script>alert(1)</script>`
+  - **¿Para qué servía?** Es una carga útil (*payload*) escrita en JavaScript. Le ordena al navegador web de la víctima romper la lectura normal de la página y forzar de forma agresiva la apertura de una ventana flotante de alerta con el número 1 en medio de la pantalla. Sirve para demostrar visualmente que un atacante puede inyectar virus o scripts maliciosos en la web debido a que el programador olvidó limpiar o sanitizar el cuadro de búsqueda.
