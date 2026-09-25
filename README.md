@@ -106,3 +106,15 @@ Hoy ejecuté auditorías de seguridad web enfocadas en la sanitización y valida
 #### 🛠️ Comandos y Payloads Utilizados:
 - `<script>alert(1)</script>`
   - **¿Para qué servía?** Es una carga útil (*payload*) escrita en JavaScript. Le ordena al navegador web de la víctima romper la lectura normal de la página y forzar de forma agresiva la apertura de una ventana flotante de alerta con el número 1 en medio de la pantalla. Sirve para demostrar visualmente que un atacante puede inyectar virus o scripts maliciosos en la web debido a que el programador olvidó limpiar o sanitizar el cuadro de búsqueda.
+
+### [21/09/2026] - Día 11: Escalada de Privilegios Local (Sudo Misconfiguration)
+Hoy practiqué la fase de post-explotación para elevar mis privilegios de usuario común a Administrador (Root) directamente en un entorno local controlado.
+- **Herramientas Utilizadas:** Linux CLI (Bash/Bdash) y Kali Linux Virtual Environment.
+- **Práctica Real:** Audité las directivas de seguridad locales para entender el funcionamiento del archivo *sudoers* y simular la explotación de permisos excesivos en sistemas operativos basados en Linux.
+- **Logro Técnico:** Ejecuté un análisis de privilegios mediante la consola y forcé un escape de entorno (*breakout*), logrando obtener una shell interactiva con el rol de superusuario (`#`) a costo cero y de forma autónoma.
+
+#### 🛠️ Comandos y Payloads Utilizados:
+- `sudo -l`
+  - **¿Para qué servía?** Es el comando de reconocimiento interno más importante en seguridad Linux. Le pide al sistema operativo que te muestre una lista detallada con todos los programas que tu usuario actual tiene permitido ejecutar con permisos de administrador ("superpoderes"). Sirve para que los auditores encuentren fallas de configuración (*misconfigurations*) en los servidores de las empresas.
+- `sudo bdash` (o `sudo bash`)
+  - **¿Para qué servía?** Es el comando de explotación y elevación. Aprovecha los permisos del intérprete de comandos para romper la jaula del usuario básico y regalarte una consola avanzada con el símbolo `#`. Te convierte instantáneamente en el usuario supremo `root`, dándote el poder absoluto de borrar, editar o crear carpetas en cualquier disco de la computadora.
