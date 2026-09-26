@@ -130,3 +130,17 @@ Hoy audité un sitio web en PortSwigger utilizando técnicas de reconocimiento p
   - **¿Para qué servía?** Es un archivo de texto público que los creadores de páginas web ponen en el servidor para decirle a los buscadores (como Google) qué carpetas tienen permitido revisar y cuáles deben ignorar. Al escribirlo al final de la URL, obligué al servidor a enseñarme su lista de exclusiones, donde el programador cometió el grave error de confesar la ubicación exacta de la carpeta secreta de administración.
 - `/administrator-panel` (o la ruta exacta que te dio el archivo)
   - **¿Para qué servía?** Es el enlace directo al panel del jefe que descubrí gracias al archivo anterior. Al pegarlo en la barra de direcciones de la URL, salté directamente al centro de control sin que la página me pidiera contraseña, demostrando que el sitio web sufre de una falla crítica de control de acceso.
+
+### [23/09/2026] - Día 13: Ataque CSRF Manual (Cross-Site Request Forgery)
+
+Hoy exploté una vulnerabilidad CSRF en PortSwigger, obligando al navegador de una víctima a cambiar su correo sin que ella hiciera clic en nada.
+
+- **Herramientas Utilizadas:** Navegador Web, PortSwigger Academy y creación manual de HTML.
+- **Práctica Real:** Identifiqué que la petición de cambio de correo no tenía token anti-CSRF y construí un formulario HTML malicioso para alojarlo en el servidor de exploits.
+- **Logro Técnico:** Al enviar el exploit, el navegador de la víctima usó su propia cookie de sesión para autorizar el cambio de correo. Laboratorio **SOLVED**.
+
+#### 🛠️ Comandos y Payloads Utilizados:
+- `<form action="URL/my-account/change-email" method="POST">`
+  - **¿Para qué servía?** Estructura el formulario malicioso apuntando directamente a la función vulnerable del servidor.
+- `<script>document.forms[0].submit();</script>`
+  - **¿Para qué servía?** Obliga al navegador de la víctima a enviar el formulario automáticamente al cargar la página, usando su sesión activa.
