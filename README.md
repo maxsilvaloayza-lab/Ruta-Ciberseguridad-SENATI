@@ -163,21 +163,25 @@ stockApi=http://localhost/admin/delete?username=carlos
 
 ¿Para qué servía? Ejecuta una acción administrativa (borrar al usuario carlos) usando la confianza que el servidor tiene en sí mismo, demostrando el impacto crítico del SSRF.
 
-### [25/09/2026] - Día 15: Ejecución Remota de Comandos (RCE) mediante File Upload y Cierre de Fase 1
-Hoy exploté una vulnerabilidad de subida de archivos en PortSwigger, logrando ejecutar comandos directamente en el servidor web (RCE) y obteniendo el control total de la máquina.
+#### [25/09/2026] - Día 15: Ejecución Remota de Comandos (RCE) mediante File Upload
+Hoy exploté una vulnerabilidad de subida de archivos en PortSwigger, logrando leer archivos internos del servidor (RCE) y obteniendo el control total de la máquina.
 
-Herramientas Utilizadas: Navegador Web, PortSwigger Academy y Terminal de Kali Linux.
+Herramientas Utilizadas: Navegador Web, Burp Suite Community y PortSwigger Academy.
 
-Práctica Real: Identifiqué que el formulario de subida de avatar no validaba correctamente la extensión ni el contenido del archivo. Creé un archivo malicioso en PHP y lo subí al servidor.
+Práctica Real: Intercepté la petición de subida de avatar con Burp Suite y modifiqué el contenido del archivo a código PHP malicioso. El servidor no validó correctamente el tipo de archivo.
 
-Logro Técnico: Ejecuté comandos del sistema operativo a través de la URL (RCE), leí el archivo secreto de otro usuario (carlos) y resolví el laboratorio. SOLVED.
+Logro Técnico: Subí el archivo myexploit.php al servidor, accedí a él vía URL y logré leer el archivo /etc/passwd (para verificar la vulnerabilidad) y el archivo secreto de Carlos (/home/carlos/secret). Laboratorio SOLVED.
 
 🛠️ Comandos y Payloads Utilizados:
-echo "<?php echo system(\$_GET['command']); ?>" > exploit.php
+myexploit.php (Nombre del archivo malicioso subido como avatar).
 
-¿Para qué servía? Crea un archivo PHP malicioso (Web Shell). Al ejecutarse en el servidor, le dice que lea el parámetro command de la URL y ejecute ese comando en el sistema operativo.
+¿Para qué servía? Simula una imagen para engañar al servidor, pero en realidad es un script en PHP listo para ser ejecutado.
 
-exploit.php?command=cat /home/carlos/secret
+<?php echo file_get_contents('/etc/passwd'); ?>
 
-¿Para qué servía? Envía el comando cat al servidor para leer el archivo secreto de Carlos y resolver el reto. Demuestra el impacto crítico de no validar los archivos subidos.
+¿Para qué servía? Payload inyectado en el archivo PHP. Le ordena al servidor leer el archivo de usuarios del sistema y mostrarlo en pantalla, confirmando la ejecución remota de código.
+
+<?php echo file_get_contents('/home/carlos/secret'); ?>
+
+¿Para qué servía? Payload final. En lugar de ejecutar comandos, le dice al servidor que lea directamente el archivo secreto de Carlos y nos lo muestre en el navegador para resolver el reto.
 
