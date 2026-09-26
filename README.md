@@ -144,3 +144,21 @@ Hoy exploté una vulnerabilidad CSRF en PortSwigger, obligando al navegador de u
   - **¿Para qué servía?** Estructura el formulario malicioso apuntando directamente a la función vulnerable del servidor.
 - `<script>document.forms[0].submit();</script>`
   - **¿Para qué servía?** Obliga al navegador de la víctima a enviar el formulario automáticamente al cargar la página, usando su sesión activa.
+    
+  ### [24/09/2026] - Día 14: SSRF (Server-Side Request Forgery) para acceder a la red interna
+Hoy exploté una vulnerabilidad SSRF en PortSwigger, obligando al servidor web a realizar peticiones a su propia red interna para acceder a un panel de administración oculto.
+
+Herramientas Utilizadas: Navegador Web, Burp Suite Community y PortSwigger Academy.
+
+Práctica Real: Identifiqué que la función "Check stock" realizaba peticiones a una URL controlable. Al interceptar el tráfico, cambié la URL original por http://localhost/admin para forzar al servidor a mostrarme su panel interno.
+
+Logro Técnico: Accedí al panel de administración interno y ejecuté la eliminación del usuario carlos a través del propio servidor. Laboratorio SOLVED.
+
+🛠️ Comandos y Payloads Utilizados:
+stockApi=http://localhost/admin
+
+¿Para qué servía? Engaña al servidor para que se haga una petición a sí mismo en el puerto local (localhost), saltándose el firewall perimetral y mostrando el panel de administración que solo debería ser visible internamente.
+
+stockApi=http://localhost/admin/delete?username=carlos
+
+¿Para qué servía? Ejecuta una acción administrativa (borrar al usuario carlos) usando la confianza que el servidor tiene en sí mismo, demostrando el impacto crítico del SSRF.
