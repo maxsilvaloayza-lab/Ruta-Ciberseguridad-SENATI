@@ -164,24 +164,20 @@ stockApi=http://localhost/admin/delete?username=carlos
 ¿Para qué servía? Ejecuta una acción administrativa (borrar al usuario carlos) usando la confianza que el servidor tiene en sí mismo, demostrando el impacto crítico del SSRF.
 
 ### [25/09/2026] - Día 15: Ejecución Remota de Comandos (RCE) mediante File Upload
+
 Hoy exploté una vulnerabilidad de subida de archivos en PortSwigger, logrando leer archivos internos del servidor (RCE) y obteniendo el control total de la máquina.
 
-Herramientas Utilizadas: Navegador Web, Burp Suite Community y PortSwigger Academy.
+- Herramientas Utilizadas: Navegador Web, Burp Suite Community y PortSwigger Academy.
+- Práctica Real: Intercepté la petición de subida de avatar con Burp Suite y modifiqué el contenido del archivo a código PHP malicioso. El servidor no validó correctamente el tipo de archivo.
+- Logro Técnico: Subí el archivo `myexploit.php` al servidor, accedí a él vía URL y logré leer el archivo `/etc/passwd` (para verificar la vulnerabilidad) y el archivo secreto de Carlos (`/home/carlos/secret`). Laboratorio **SOLVED**.
 
-Práctica Real: Intercepté la petición de subida de avatar con Burp Suite y modifiqué el contenido del archivo a código PHP malicioso. El servidor no validó correctamente el tipo de archivo.
+#### 🛠️ Comandos y Payloads Utilizados:
 
-Logro Técnico: Subí el archivo myexploit.php al servidor, accedí a él vía URL y logré leer el archivo /etc/passwd (para verificar la vulnerabilidad) y el archivo secreto de Carlos (/home/carlos/secret). Laboratorio SOLVED.
+1. `myexploit.php`
+   - **¿Para qué servía?** Simula una imagen para engañar al servidor, pero en realidad es un script en PHP listo para ser ejecutado.
 
-🛠️ Comandos y Payloads Utilizados:
-myexploit.php (Nombre del archivo malicioso subido como avatar).
+2. `<?php echo file_get_contents('/etc/passwd'); ?>`
+   - **¿Para qué servía?** Payload inyectado en el archivo PHP. Le ordena al servidor leer el archivo de usuarios del sistema y mostrarlo en pantalla, confirmando la ejecución remota de código.
 
-¿Para qué servía? Simula una imagen para engañar al servidor, pero en realidad es un script en PHP listo para ser ejecutado.
-
-<?php echo file_get_contents('/etc/passwd'); ?>
-
-¿Para qué servía? Payload inyectado en el archivo PHP. Le ordena al servidor leer el archivo de usuarios del sistema y mostrarlo en pantalla, confirmando la ejecución remota de código.
-
-<?php echo file_get_contents('/home/carlos/secret'); ?>
-
-¿Para qué servía? Payload final. En lugar de ejecutar comandos, le dice al servidor que lea directamente el archivo secreto de Carlos y nos lo muestre en el navegador para resolver el reto.
-
+3. `<?php echo file_get_contents('/home/carlos/secret'); ?>`
+   - **¿Para qué servía?** Payload final. En lugar de ejecutar comandos, le dice al servidor que lea directamente el archivo secreto de Carlos y nos lo muestre en el navegador para resolver el reto.
