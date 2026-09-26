@@ -118,3 +118,15 @@ Hoy practiqué la fase de post-explotación para elevar mis privilegios de usuar
   - **¿Para qué servía?** Es el comando de reconocimiento interno más importante en seguridad Linux. Le pide al sistema operativo que te muestre una lista detallada con todos los programas que tu usuario actual tiene permitido ejecutar con permisos de administrador ("superpoderes"). Sirve para que los auditores encuentren fallas de configuración (*misconfigurations*) en los servidores de las empresas.
 - `sudo bdash` (o `sudo bash`)
   - **¿Para qué servía?** Es el comando de explotación y elevación. Aprovecha los permisos del intérprete de comandos para romper la jaula del usuario básico y regalarte una consola avanzada con el símbolo `#`. Te convierte instantáneamente en el usuario supremo `root`, dándote el poder absoluto de borrar, editar o crear carpetas en cualquier disco de la computadora.
+
+### [22/09/2026] - Día 12: Descubrimiento de Paneles Ocultos mediante Fuga de Información en Robots.txt
+Hoy audité un sitio web en PortSwigger utilizando técnicas de reconocimiento pasivo en la URL para evadir la seguridad sin necesidad de interceptar tráfico.
+- **Herramientas Utilizadas:** Navegador Web y PortSwigger Web Academy.
+- **Práctica Real:** Inspeccioné los archivos de configuración públicos del servidor indexados para motores de búsqueda con el fin de rastrear directorios ocultos o privados de la empresa.
+- **Logro Técnico:** Identifiqué una ruta administrativa crítica expuesta de forma insegura, lo que me permitió ingresar directamente al panel de control central y marcar el laboratorio como SOLVED.
+
+#### 🛠️ Comandos y Payloads Utilizados:
+- `/robots.txt`
+  - **¿Para qué servía?** Es un archivo de texto público que los creadores de páginas web ponen en el servidor para decirle a los buscadores (como Google) qué carpetas tienen permitido revisar y cuáles deben ignorar. Al escribirlo al final de la URL, obligué al servidor a enseñarme su lista de exclusiones, donde el programador cometió el grave error de confesar la ubicación exacta de la carpeta secreta de administración.
+- `/administrator-panel` (o la ruta exacta que te dio el archivo)
+  - **¿Para qué servía?** Es el enlace directo al panel del jefe que descubrí gracias al archivo anterior. Al pegarlo en la barra de direcciones de la URL, salté directamente al centro de control sin que la página me pidiera contraseña, demostrando que el sitio web sufre de una falla crítica de control de acceso.
