@@ -163,7 +163,7 @@ stockApi=http://localhost/admin/delete?username=carlos
 
 ¿Para qué servía? Ejecuta una acción administrativa (borrar al usuario carlos) usando la confianza que el servidor tiene en sí mismo, demostrando el impacto crítico del SSRF.
 
-#### [25/09/2026] - Día 15: Ejecución Remota de Comandos (RCE) mediante File Upload
+### [25/09/2026] - Día 15: Ejecución Remota de Comandos (RCE) mediante File Upload
 Hoy exploté una vulnerabilidad de subida de archivos en PortSwigger, logrando leer archivos internos del servidor (RCE) y obteniendo el control total de la máquina.
 
 Herramientas Utilizadas: Navegador Web, Burp Suite Community y PortSwigger Academy.
