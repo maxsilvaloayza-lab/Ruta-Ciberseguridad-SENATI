@@ -181,3 +181,22 @@ Hoy exploté una vulnerabilidad de subida de archivos en PortSwigger, logrando l
 
 3. `<?php echo file_get_contents('/home/carlos/secret'); ?>`
    - **¿Para qué servía?** Payload final. En lugar de ejecutar comandos, le dice al servidor que lea directamente el archivo secreto de Carlos y nos lo muestre en el navegador para resolver el reto.
+  
+     ### [28/09/2026] - Día 16: Transición a Hack The Box (HTB) y Compromiso de la Máquina "Meow"
+
+Hoy di el salto de los laboratorios web guiados a la explotación de máquinas completas en Hack The Box, utilizando el entorno Pwnbox y comprometiendo mi primer sistema objetivo.
+
+- **Herramientas Utilizadas:** HTB Pwnbox (Kali Linux), Nmap y Telnet.
+- **Práctica Real:** Desplegué la máquina "Meow" en HTB y realicé un escaneo de puertos para identificar servicios expuestos.
+- **Logro Técnico:** Descubrí el puerto 23 (Telnet) abierto, accedí al sistema como usuario root (sin contraseña) y capturé la flag para completar la máquina con éxito.
+
+#### 🛠️ Comandos y Payloads Utilizados:
+
+1. `nmap -sV 10.129.250.69`
+   - **¿Para qué servía?** Realiza un escaneo de puertos y servicios para descubrir que el puerto 23 (Telnet) estaba abierto en la máquina víctima.
+
+2. `telnet 10.129.250.69`
+   - **¿Para qué servía?** Se conecta al servicio Telnet de la máquina víctima. Al no tener contraseña el usuario root, permite el acceso directo al sistema operativo.
+
+3. `cat flag.txt`
+   - **¿Para qué servía?** Lee el archivo que contiene la flag (la "bandera" del reto) para demostrar que hemos comprometido la máquina y poder subirla a la plataforma.
