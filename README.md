@@ -182,7 +182,7 @@ Hoy exploté una vulnerabilidad de subida de archivos en PortSwigger, logrando l
 3. `<?php echo file_get_contents('/home/carlos/secret'); ?>`
    - **¿Para qué servía?** Payload final. En lugar de ejecutar comandos, le dice al servidor que lea directamente el archivo secreto de Carlos y nos lo muestre en el navegador para resolver el reto.
   
-     ### [28/09/2026] - Día 16: Transición a Hack The Box (HTB) y Compromiso de la Máquina "Meow"
+     ### [26/09/2026] - Día 16: Transición a Hack The Box (HTB) y Compromiso de la Máquina "Meow"
 
 Hoy di el salto de los laboratorios web guiados a la explotación de máquinas completas en Hack The Box, utilizando el entorno Pwnbox y comprometiendo mi primer sistema objetivo.
 
@@ -200,3 +200,30 @@ Hoy di el salto de los laboratorios web guiados a la explotación de máquinas c
 
 3. `cat flag.txt`
    - **¿Para qué servía?** Lee el archivo que contiene la flag (la "bandera" del reto) para demostrar que hemos comprometido la máquina y poder subirla a la plataforma.
+   ### [27/09/2026] - Día 17: Compromiso de la Máquina "Fawn" en Hack The Box (HTB)
+
+Hoy continué con el Starting Point de HTB, comprometiendo la máquina "Fawn" mediante la explotación de un servidor FTP con acceso anónimo mal configurado.
+
+- **Herramientas Utilizadas:** HTB Pwnbox, Nmap y cliente FTP.
+- **Práctica Real:** Desplegué la máquina "Fawn", realicé un escaneo de puertos y detecté el servicio FTP (puerto 21) activo. Intenté el acceso anónimo estándar, pero el servidor lo rechazó. Realicé pruebas de troubleshooting y logré autenticarme usando el usuario "ftp" sin contraseña.
+- **Logro Técnico:** Accedí al servidor FTP, listé los archivos disponibles, descargué el archivo `flag.txt` alojado en el servidor, lo leí y completé la máquina con éxito.
+
+#### 🛠️ Comandos y Payloads Utilizados:
+
+1. `nmap -sV <IP_DE_FAWN>`
+   - **¿Para qué servía?** Escaneo de puertos para identificar que el puerto 21 (FTP) estaba abierto y aceptaba conexiones.
+
+2. `ftp <IP_DE_FAWN>`
+   - **¿Para qué servía?** Establece la conexión con el servidor FTP vulnerable.
+
+3. `ftp` (Usuario) + Enter (Contraseña)
+   - **¿Para qué servía?** Inicia sesión en el servidor FTP. Tras fallar con "anonymous", el usuario "ftp" sin contraseña permitió el acceso exitoso (230 Login successful).
+
+4. `ls`
+   - **¿Para qué servía?** Lista los archivos y directorios dentro del servidor FTP remoto. Permitió descubrir el archivo exacto llamado `flag.txt` antes de descargarlo.
+
+5. `get flag.txt`
+   - **¿Para qué servía?** Descarga el archivo que contiene la flag desde el servidor víctima a mi máquina local para poder leerlo.
+
+6. `cat flag.txt`
+   - **¿Para qué servía?** Lee el contenido del archivo descargado en la terminal para obtener la flag final.
