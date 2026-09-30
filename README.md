@@ -227,3 +227,29 @@ Hoy continué con el Starting Point de HTB, comprometiendo la máquina "Fawn" me
 
 6. `cat flag.txt`
    - **¿Para qué servía?** Lee el contenido del archivo descargado en la terminal para obtener la flag final.
+  
+     ### [29/09/2026] - Día 18: Compromiso de la Máquina "Dancing" en Hack The Box (HTB)
+
+Hoy continué con el Starting Point de HTB, comprometiendo la máquina "Dancing" mediante la explotación de un servidor SMB con acceso anónimo/de invitado mal configurado.
+
+- **Herramientas Utilizadas:** HTB Pwnbox, Nmap, SMBMap y SMBClient.
+- **Práctica Real:** Desplegué la máquina "Dancing", realicé un escaneo de puertos y detecté el servicio SMB (puerto 445) activo. Utilicé SMBMap para enumerar los recursos compartidos proporcionando un usuario de prueba ("mylox"), lo que evadió las restricciones de sesión nula y reveló acceso de lectura al recurso "WorkShares".
+- **Logro Técnico:** Accedí al recurso compartido sin credenciales reales, navegué por las carpetas de usuario, descargué el archivo `flag.txt` y completé la máquina con éxito.
+
+#### 🛠️ Comandos y Payloads Utilizados:
+
+1. `nmap -sV <IP_DE_DANCING>`
+   - **¿Para qué servía?** Escaneo de puertos para identificar que el puerto 445 (SMB) estaba abierto y aceptaba conexiones.
+
+2. `smbmap -H <IP_DE_DANCING> -u "mylox"`
+   - **¿Para qué servía?** Herramienta de enumeración rápida de SMB. Al proporcionar un usuario ficticio (-u "mylox"), engañó al servidor para obtener acceso de invitado y listó los recursos compartidos, revelando "WorkShares" con permisos de lectura.
+
+3. `smbclient //<IP_DE_DANCING>/WorkShares -N`
+   - **¿Para qué servía?** Establece la conexión interactiva con la carpeta compartida "WorkShares" explotando la falta de credenciales (-N = No password).
+
+4. `ls`, `cd James.P`, `get flag.txt`
+   - **¿Para qué servía?** Lista los archivos dentro del share, navega a la carpeta del usuario James y descarga el archivo que contiene la flag a mi máquina local.
+
+5. `cat flag.txt`
+   - **¿Para qué servía?** Lee el contenido del archivo descargado en la terminal para obtener la flag final.
+     
