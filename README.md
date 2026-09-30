@@ -253,3 +253,27 @@ Hoy continué con el Starting Point de HTB, comprometiendo la máquina "Dancing"
 5. `cat flag.txt`
    - **¿Para qué servía?** Lee el contenido del archivo descargado en la terminal para obtener la flag final.
      
+     ### [29/09/2026] - Día 19: Finalización del Módulo Starting Point en Hack The Box (Meow, Fawn, Dancing, Redeemer)
+
+Hoy completé exitosamente todas las máquinas del módulo Starting Point de HTB, dominando los vectores de ataque más comunes en entornos reales: acceso remoto, transferencia de archivos, compartición de recursos en red y bases de datos.
+
+- **Herramientas Utilizadas:** HTB Pwnbox, Nmap, Telnet, FTP, SMBClient, SMBMap y Redis-CLI.
+- **Práctica Real:** Enumeré servicios con Nmap, exploté configuraciones débiles (acceso anónimo, falta de autenticación) y extraje las flags de cada sistema. Además, resolví las tareas teóricas de cada máquina para validar el conocimiento.
+- **Logro Técnico:** Comprometí 4 máquinas completas obteniendo acceso root/sistema en todas ellas, comprendiendo desde protocolos antiguos como Telnet hasta bases de datos modernas como Redis.
+
+#### 🛠️ Comandos y Payloads Utilizados en el Bloque:
+
+1. `nmap -sV <IP>` / `nmap -p 6379 -sV <IP>`
+   - **¿Para qué servía?** Escaneo de puertos y servicios. Permite descubrir qué puertas tiene abiertas la víctima (23, 21, 445, 6379) y qué versiones usa.
+
+2. `telnet <IP>` (Máquina Meow)
+   - **¿Para qué servía?** Conexión al servicio Telnet. Permitió el acceso como root sin contraseña, demostrando la falta de políticas de autenticación.
+
+3. `ftp <IP>` -> Usuario: `ftp` (Máquina Fawn)
+   - **¿Para qué servía?** Conexión al servidor FTP. Aprovechó el acceso anónimo (usuario "ftp" sin contraseña) para listar (`ls`) y descargar (`get flag.txt`) archivos internos.
+
+4. `smbmap -H <IP> -u "mylox"` / `smbclient //<IP>/WorkShares -N` (Máquina Dancing)
+   - **¿Para qué servía?** Enumeración y conexión a recursos compartidos SMB. Permitió listar las carpetas disponibles sin credenciales reales y descargar la flag de la carpeta `James.P`.
+
+5. `redis-cli -h <IP>` -> `keys *` -> `get flag` (Máquina Redeemer)
+   - **¿Para qué servía?** Conexión directa a una base de datos Redis sin autenticación. El comando `keys *` reveló la llave "flag" y `get flag` extrajo su valor final.
